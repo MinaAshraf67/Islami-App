@@ -31,7 +31,7 @@ class _SuuraDetailsScreenState extends State<SuuraDetailsScreen> {
             ),
           ),
           body: Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(18.0),
             child: Card(
               shadowColor: Colors.black,
               shape: RoundedRectangleBorder(
@@ -42,22 +42,28 @@ class _SuuraDetailsScreenState extends State<SuuraDetailsScreen> {
               elevation: 12.0,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ListView.separated(
-                  separatorBuilder: (context, index) => Divider(
-                    color: MyThemeData.primaryColor,
-                    thickness: 1.0,
-                    indent: 30.0,
-                    endIndent: 30.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    return Text(
-                      verses[index],
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    );
-                  },
-                  itemCount: verses.length,
-                ),
+                child: verses.isEmpty
+                    ? Center(
+                        child: CircularProgressIndicator(
+                          color: MyThemeData.primaryColor,
+                        ),
+                      )
+                    : ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          color: MyThemeData.primaryColor,
+                          thickness: 1.0,
+                          indent: 30.0,
+                          endIndent: 30.0,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Text(
+                            verses[index],
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          );
+                        },
+                        itemCount: verses.length,
+                      ),
               ),
             ),
           ),
