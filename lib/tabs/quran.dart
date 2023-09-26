@@ -31,6 +31,7 @@ class QuranTab extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               separatorBuilder: (context, index) => Divider(
                 color: MyThemeData.primaryColor,
                 thickness: 1.0,
