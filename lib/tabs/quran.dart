@@ -31,6 +31,7 @@ class QuranTab extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               separatorBuilder: (context, index) => Divider(
                 color: MyThemeData.primaryColor,
                 thickness: 1.0,
@@ -39,7 +40,7 @@ class QuranTab extends StatelessWidget {
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  Navigator.pushNamed(context, SuuraDetailsScreen.routeName,
+                  Navigator.pushNamed(context, SuraDetailsScreen.routeName,
                       arguments: SuraModel(suraName[index], index));
                 },
                 child: Text(
