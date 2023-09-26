@@ -1,16 +1,22 @@
-# islami_app
+<h1 align="center" id="title">Islami App</h1>
 
-A new Flutter project.
+<p id="description">Islami app is a Quran app that shows Quran Sura's Quran Ahadeth Sebha radio and Settings to switch between light &amp; dark mode and switch between English &amp; Arabic language</p>
 
-## Getting Started
+<p align="center"><img src="https://img.shields.io/badge/Flutter-blue" alt="shields"><img src="https://img.shields.io/badge/Dart-lightblue" alt="shields"><img src="https://img.shields.io/badge/Mobile_App_Development-darkgreen" alt="shields"><img src="https://img.shields.io/badge/Cross_Platform-lightgray" alt="shields"></p>
 
-This project is a starting point for a Flutter application.
+<h2>Project Screenshots:</h2>
 
-A few resources to get you started if this is your first Flutter project:
+<img src="https://i.imgur.com/22Hzi7h.png" alt="project-screenshot" width="412" height="870/">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<img src="https://i.imgur.com/vpQrKPx.jpg" alt="project-screenshot" width="412" height="870/">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://i.imgur.com/4GmQwTl.jpg" alt="project-screenshot" width="412" height="870/">
+
+ 
+  
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+*   Dart
+*   Flutter
