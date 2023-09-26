@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/model/sura_model.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:islami_app/model/hadeth_model.dart';
 import 'package:islami_app/shared/theme.dart';
 
-class SuraDetailsScreen extends StatefulWidget {
-  static const String routeName = 'suraDetails';
-
-  @override
-  State<SuraDetailsScreen> createState() => _SuuraDetailsScreenState();
-}
-
-class _SuuraDetailsScreenState extends State<SuraDetailsScreen> {
-  List<String> verses = [];
+class AhadethDetailsScreen extends StatelessWidget {
+  const AhadethDetailsScreen({super.key});
+  static const String routeName = 'ahadeth';
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
-    if (verses.isEmpty) {
-      loadFile(args.index);
-    }
+    var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
+
     return Stack(
       children: [
         Image.asset('assets/images/background.png',
@@ -26,7 +17,7 @@ class _SuuraDetailsScreenState extends State<SuraDetailsScreen> {
         Scaffold(
           appBar: AppBar(
             title: Text(
-              args.name,
+              args.title,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
@@ -53,13 +44,13 @@ class _SuuraDetailsScreenState extends State<SuraDetailsScreen> {
                     return Directionality(
                       textDirection: TextDirection.rtl,
                       child: Text(
-                        verses[index],
+                        args.content[index],
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     );
                   },
-                  itemCount: verses.length,
+                  itemCount: args.content.length,
                 ),
               ),
             ),
@@ -67,13 +58,5 @@ class _SuuraDetailsScreenState extends State<SuraDetailsScreen> {
         ),
       ],
     );
-  }
-
-  loadFile(int index) async {
-    String file = await rootBundle.loadString('assets/files/${index + 1}.txt');
-    List<String> lines = file.split('\n');
-    setState(() {
-      verses = lines;
-    });
   }
 }
