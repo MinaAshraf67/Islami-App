@@ -6,7 +6,7 @@ import 'package:islami_app/shared/theme.dart';
 
 // ignore: must_be_immutable
 class AhadethTab extends StatefulWidget {
-  AhadethTab({super.key});
+  const AhadethTab({super.key});
 
   @override
   State<AhadethTab> createState() => _AhadethTabState();
