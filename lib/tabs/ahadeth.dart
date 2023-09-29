@@ -5,9 +5,14 @@ import 'package:islami_app/screens/ahadethDetails.dart';
 import 'package:islami_app/shared/theme.dart';
 
 // ignore: must_be_immutable
-class AhadethTab extends StatelessWidget {
+class AhadethTab extends StatefulWidget {
   AhadethTab({super.key});
 
+  @override
+  State<AhadethTab> createState() => _AhadethTabState();
+}
+
+class _AhadethTabState extends State<AhadethTab> {
   List<HadethModel> allAhadeth = [];
 
   @override
@@ -68,7 +73,7 @@ class AhadethTab extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -85,6 +90,7 @@ class AhadethTab extends StatelessWidget {
         List<String> content = hadethOneLines;
         HadethModel hadethModel = HadethModel(title: title, content: content);
         allAhadeth.add(hadethModel);
+        setState(() {});
       }
     }).catchError((e) {
       print(e.toString());
