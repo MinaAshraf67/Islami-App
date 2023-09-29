@@ -47,7 +47,7 @@ class _SebhaTabState extends State<SebhaTab> {
                         onTap: () {
                           setState(() {
                             counter++;
-                            angle += 20;
+                            angle += 15;
                             if (counter == 30) {
                               if (index == 2) {
                                 index = 0;
@@ -92,7 +92,7 @@ class _SebhaTabState extends State<SebhaTab> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 32.0),
+            margin: const EdgeInsets.only(top: 64.0),
             padding: const EdgeInsets.symmetric(
               vertical: 8.0,
               horizontal: 16.0,
