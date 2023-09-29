@@ -16,7 +16,7 @@ class RadioTab extends StatelessWidget {
             height: 64.0,
           ),
           Text(
-            'El-Quran AlKareem Radio ',
+            'El-Quran AlKareem Station ',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
