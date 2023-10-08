@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/shared/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -72,7 +73,7 @@ class _SebhaTabState extends State<SebhaTab> {
             height: 64.0,
           ),
           Text(
-            'Numbers of Tasbehat ',
+            AppLocalizations.of(context)!.tasbehNums,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),

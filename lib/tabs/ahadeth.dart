@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:islami_app/model/hadeth_model.dart';
 import 'package:islami_app/screens/ahadethDetails.dart';
 import 'package:islami_app/shared/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // ignore: must_be_immutable
 class AhadethTab extends StatefulWidget {
@@ -32,7 +33,7 @@ class _AhadethTabState extends State<AhadethTab> {
             thickness: 2.0,
           ),
           Text(
-            'Ahadeth',
+            AppLocalizations.of(context)!.ahadeth,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),

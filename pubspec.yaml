@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^6.0.0
   flutter_native_splash: ^2.3.2
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
   
 
 dev_dependencies:
@@ -60,7 +63,7 @@ flutter_native_splash:
 
     
 flutter:
-
+  generate: true # Add this line
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
