@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/shared/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -19,8 +21,8 @@ class _SebhaTabState extends State<SebhaTab> {
     return Center(
       child: Column(
         children: [
-          const SizedBox(
-            height: 20.0,
+          SizedBox(
+            height: 20.0.h,
           ),
           Stack(
             children: [
@@ -29,15 +31,15 @@ class _SebhaTabState extends State<SebhaTab> {
                 margin: const EdgeInsets.only(left: 40.0),
                 child: Image.asset(
                   'assets/images/sebha_head.png',
-                  width: 70.0,
+                  width: 70.0.w,
                 ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 75.0,
+                    SizedBox(
+                      height: 75.0.h,
                     ),
                     Transform.rotate(
                       angle: angle,
@@ -59,7 +61,7 @@ class _SebhaTabState extends State<SebhaTab> {
                         },
                         child: Image.asset(
                           'assets/images/sebha_body.png',
-                          width: 200.0,
+                          width: 200.0.w,
                         ),
                       ),
                     ),
@@ -68,17 +70,17 @@ class _SebhaTabState extends State<SebhaTab> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 64.0,
+          SizedBox(
+            height: 64.0.h,
           ),
           Text(
-            'Numbers of Tasbehat ',
+            AppLocalizations.of(context)!.tasbehNums,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          const SizedBox(
-            height: 32.0,
+          SizedBox(
+            height: 32.0.h,
           ),
           Container(
             padding: const EdgeInsets.all(16.0),
