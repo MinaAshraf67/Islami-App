@@ -1,9 +1,10 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/hadeth_model.dart';
 import 'package:islami_app/shared/theme.dart';
 
 class AhadethDetailsScreen extends StatelessWidget {
-  const AhadethDetailsScreen({super.key});
   static const String routeName = 'ahadeth';
 
   @override
