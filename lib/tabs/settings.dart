@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/screens/bottomSheets/language_bottom_sheet.dart';
 import 'package:islami_app/screens/bottomSheets/themeing_bottom_sheet.dart';
-// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/shared/theme.dart';
+import 'package:provider/provider.dart';
 
 class SettingsTab extends StatefulWidget {
   const SettingsTab({super.key});
@@ -15,6 +17,7 @@ class SettingsTab extends StatefulWidget {
 class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Column(
@@ -24,7 +27,7 @@ class _SettingsTabState extends State<SettingsTab> {
             height: 32.0.h,
           ),
           Text(
-            'Language',
+            AppLocalizations.of(context)!.settingsLanguage,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           InkWell(
@@ -50,7 +53,9 @@ class _SettingsTabState extends State<SettingsTab> {
               child: Row(
                 children: [
                   Text(
-                    'English',
+                    provider.isoCode == 'en'
+                        ? AppLocalizations.of(context)!.settingsLanguageEn
+                        : AppLocalizations.of(context)!.settingsLanguageAr,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Spacer(),
@@ -65,7 +70,7 @@ class _SettingsTabState extends State<SettingsTab> {
             height: 16.0.h,
           ),
           Text(
-            'Themeing',
+            AppLocalizations.of(context)!.settingsThemeing,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           InkWell(
@@ -91,7 +96,7 @@ class _SettingsTabState extends State<SettingsTab> {
               child: Row(
                 children: [
                   Text(
-                    'Light',
+                    AppLocalizations.of(context)!.settingsThemeingLight,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Spacer(),
@@ -117,7 +122,7 @@ class _SettingsTabState extends State<SettingsTab> {
           borderSide: const BorderSide(
             color: Colors.transparent,
           )),
-      builder: (context) => const LanguageBottomSheet(),
+      builder: (context) => LanguageBottomSheet(),
     );
   }
 

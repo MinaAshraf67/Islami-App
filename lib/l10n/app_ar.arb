@@ -8,5 +8,13 @@
     "bottomNavAhadeth" : "الأحاديث",
     "bottomNavSebha" : "التسبيح",
     "bottomNavRadio" : "الراديو",
-    "bottomNavSettings" : "الإعدادات"
+    "bottomNavSettings" : "الإعدادات",
+    "settingsLanguage" : "اللغة",
+    "settingsLanguageAr" : "العربية",
+    "settingsLanguageEn" : "الإنجليزية",
+    "settingsThemeing" : "سمة التطبيق",
+    "settingsThemeingLight" : "فاتح",
+    "settingsThemeingDark" : "غامق"
+
+
 }

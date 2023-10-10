@@ -8,7 +8,13 @@
     "bottomNavAhadeth" : "Ahadeth",
     "bottomNavSebha" : "Al Tasbeh",
     "bottomNavRadio" : "Radio",
-    "bottomNavSettings" : "Settings"
+    "bottomNavSettings" : "Settings",
+    "settingsLanguage" : "Language",
+    "settingsLanguageAr" : "Arabic",
+    "settingsLanguageEn" : "English",
+    "settingsThemeing" : "Themeing",
+    "settingsThemeingLight" : "Light",
+    "settingsThemeingDark" : "Dark"
 }
 
 

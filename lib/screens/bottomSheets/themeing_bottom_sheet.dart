@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:islami_app/shared/theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ThemeingBottomSheet extends StatelessWidget {
   const ThemeingBottomSheet({super.key});
@@ -22,7 +23,7 @@ class ThemeingBottomSheet extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Light',
+                  AppLocalizations.of(context)!.settingsThemeingLight,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 const Spacer(),
@@ -39,7 +40,7 @@ class ThemeingBottomSheet extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Dark',
+                  AppLocalizations.of(context)!.settingsThemeingDark,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ],
