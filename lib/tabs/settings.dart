@@ -47,7 +47,9 @@ class _SettingsTabState extends State<SettingsTab> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
                 border: Border.all(
-                  color: MyThemeData.primaryColor,
+                  color: provider.appMode == ThemeMode.light
+                      ? MyThemeData.primaryColor
+                      : MyThemeData.darkYellowColor,
                 ),
               ),
               child: Row(
@@ -59,8 +61,11 @@ class _SettingsTabState extends State<SettingsTab> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Spacer(),
-                  const Icon(
+                  Icon(
                     Icons.arrow_drop_down_sharp,
+                    color: provider.appMode == ThemeMode.light
+                        ? MyThemeData.primaryColor
+                        : MyThemeData.whiteColor,
                   ),
                 ],
               ),
@@ -90,18 +95,25 @@ class _SettingsTabState extends State<SettingsTab> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(14.0),
                 border: Border.all(
-                  color: MyThemeData.primaryColor,
+                  color: provider.appMode == ThemeMode.light
+                      ? MyThemeData.primaryColor
+                      : MyThemeData.darkYellowColor,
                 ),
               ),
               child: Row(
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.settingsThemeingLight,
+                    provider.appMode == ThemeMode.light
+                        ? AppLocalizations.of(context)!.settingsThemeingLight
+                        : AppLocalizations.of(context)!.settingsThemeingDark,
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const Spacer(),
-                  const Icon(
+                  Icon(
                     Icons.arrow_drop_down_sharp,
+                    color: provider.appMode == ThemeMode.light
+                        ? MyThemeData.primaryColor
+                        : MyThemeData.whiteColor,
                   ),
                 ],
               ),

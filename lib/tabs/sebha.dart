@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/shared/theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -18,6 +20,7 @@ int index = 0;
 class _SebhaTabState extends State<SebhaTab> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Center(
       child: Column(
         children: [
@@ -29,10 +32,15 @@ class _SebhaTabState extends State<SebhaTab> {
               Container(
                 alignment: Alignment.topCenter,
                 margin: const EdgeInsets.only(left: 40.0),
-                child: Image.asset(
-                  'assets/images/sebha_head.png',
-                  width: 70.0.w,
-                ),
+                child: provider.appMode == ThemeMode.light
+                    ? Image.asset(
+                        'assets/images/sebha_head.png',
+                        width: 70.0.w,
+                      )
+                    : Image.asset(
+                        'assets/images/sebha_head_dark.png',
+                        width: 70.0.w,
+                      ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
@@ -59,10 +67,15 @@ class _SebhaTabState extends State<SebhaTab> {
                             }
                           });
                         },
-                        child: Image.asset(
-                          'assets/images/sebha_body.png',
-                          width: 200.0.w,
-                        ),
+                        child: provider.appMode == ThemeMode.light
+                            ? Image.asset(
+                                'assets/images/sebha_body.png',
+                                width: 200.0.w,
+                              )
+                            : Image.asset(
+                                'assets/images/sebha_body_dark.png',
+                                width: 200.0.w,
+                              ),
                       ),
                     ),
                   ],
@@ -85,7 +98,9 @@ class _SebhaTabState extends State<SebhaTab> {
           Container(
             padding: const EdgeInsets.all(16.0),
             decoration: BoxDecoration(
-              color: const Color(0xFFB7935F).withOpacity(0.4),
+              color: provider.appMode == ThemeMode.light
+                  ? const Color(0xFFB7935F).withOpacity(0.4)
+                  : MyThemeData.secondaryColor,
               borderRadius: BorderRadius.circular(25.0),
             ),
             child: Text(
@@ -100,13 +115,17 @@ class _SebhaTabState extends State<SebhaTab> {
               horizontal: 16.0,
             ),
             decoration: BoxDecoration(
-              color: MyThemeData.primaryColor,
+              color: provider.appMode == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.darkYellowColor,
               borderRadius: BorderRadius.circular(25.0),
             ),
             child: Text(
               tasbehat[index],
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: MyThemeData.whiteColor,
+                    color: provider.appMode == ThemeMode.light
+                        ? MyThemeData.whiteColor
+                        : MyThemeData.blackColor,
                   ),
             ),
           ),
