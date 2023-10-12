@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami_app/providers/my_provider.dart';
-import 'package:islami_app/screens/bottomSheets/language_bottom_sheet.dart';
-import 'package:islami_app/screens/bottomSheets/themeing_bottom_sheet.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/shared/theme.dart';
 import 'package:provider/provider.dart';
 
-class SettingsTab extends StatefulWidget {
+class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});
 
-  @override
-  State<SettingsTab> createState() => _SettingsTabState();
-}
-
-class _SettingsTabState extends State<SettingsTab> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
@@ -32,9 +26,7 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
           InkWell(
             onTap: () {
-              setState(() {
-                showLanguageBottomSheet();
-              });
+              provider.showLanguageBottomSheet(context);
             },
             child: Container(
               width: double.infinity,
@@ -80,9 +72,7 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
           InkWell(
             onTap: () {
-              setState(() {
-                showThemeingBottomSheet();
-              });
+              provider.showThemeingBottomSheet(context);
             },
             child: Container(
               width: double.infinity,
@@ -121,34 +111,6 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
         ],
       ),
-    );
-  }
-
-  showLanguageBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      useSafeArea: true,
-      isScrollControlled: true,
-      shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18.0),
-          borderSide: const BorderSide(
-            color: Colors.transparent,
-          )),
-      builder: (context) => LanguageBottomSheet(),
-    );
-  }
-
-  showThemeingBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      useSafeArea: true,
-      isScrollControlled: true,
-      shape: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18.0),
-          borderSide: const BorderSide(
-            color: Colors.transparent,
-          )),
-      builder: (context) => ThemeingBottomSheet(),
     );
   }
 }

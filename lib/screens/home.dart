@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:islami_app/providers/my_provider.dart';
 import 'package:islami_app/shared/theme.dart';
@@ -9,15 +11,8 @@ import 'package:islami_app/tabs/settings.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   static const String routeName = 'home';
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +32,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             bottomNavigationBar: BottomNavigationBar(
-              currentIndex: index,
+              currentIndex: provider.index,
               iconSize: 40,
               onTap: (value) {
-                setState(() {
-                  index = value;
-                });
+                provider.bottomNavCurrent(value);
               },
               items: [
                 BottomNavigationBarItem(
@@ -90,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            body: tabs[index],
+            body: tabs[provider.index],
           ),
         ],
       ),

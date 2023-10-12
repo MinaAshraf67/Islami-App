@@ -7,14 +7,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
-class AhadethTab extends StatefulWidget {
+class AhadethTab extends StatelessWidget {
   const AhadethTab({super.key});
 
-  @override
-  State<AhadethTab> createState() => _AhadethTabState();
-}
-
-class _AhadethTabState extends State<AhadethTab> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
