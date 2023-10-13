@@ -1,7 +1,11 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:islami_app/model/sura_model.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:islami_app/providers/my_provider.dart';
+import 'package:islami_app/providers/sura_details_provider.dart';
 import 'package:islami_app/shared/theme.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routeName = 'suraDetails';
@@ -11,69 +15,90 @@ class SuraDetailsScreen extends StatefulWidget {
 }
 
 class _SuuraDetailsScreenState extends State<SuraDetailsScreen> {
-  List<String> verses = [];
-
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
-    if (verses.isEmpty) {
-      loadFile(args.index);
-    }
-    return Stack(
-      children: [
-        Image.asset('assets/images/background.png',
-            height: double.infinity, width: double.infinity, fit: BoxFit.cover),
-        Scaffold(
-          appBar: AppBar(
-            title: Text(
-              args.name,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: Card(
-              shadowColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    18.0,
+    // if (suraProvider.verses.isEmpty) {
+    //   suraProvider.loadFile(args.index);
+    // }
+    return ChangeNotifierProvider(
+      create: (context) => SuraDetailsProvider()..loadFile(args.index),
+      builder: (context, child) {
+        var suraProvider = Provider.of<SuraDetailsProvider>(context);
+
+        return SafeArea(
+          child: Stack(
+            children: [
+              Image.asset(
+                provider.getBackgrund(),
+                height: double.infinity,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              Scaffold(
+                appBar: AppBar(
+                  title: Text(
+                    args.name,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  side: BorderSide(color: MyThemeData.primaryColor)),
-              elevation: 12.0,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView.separated(
-                  separatorBuilder: (context, index) => Divider(
-                    color: MyThemeData.primaryColor,
-                    thickness: 1.0,
-                    indent: 30.0,
-                    endIndent: 30.0,
-                  ),
-                  itemBuilder: (context, index) {
-                    return Directionality(
-                      textDirection: TextDirection.rtl,
-                      child: Text(
-                        verses[index],
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodySmall,
+                ),
+                body: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Card(
+                    color: provider.appMode == ThemeMode.light
+                        ? MyThemeData.whiteColor
+                        : MyThemeData.secondaryColor,
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        18.0,
                       ),
-                    );
-                  },
-                  itemCount: verses.length,
+                      side: BorderSide(
+                        color: provider.appMode == ThemeMode.light
+                            ? MyThemeData.primaryColor
+                            : MyThemeData.darkYellowColor,
+                      ),
+                    ),
+                    elevation: 12.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          color: provider.appMode == ThemeMode.light
+                              ? MyThemeData.primaryColor
+                              : MyThemeData.darkYellowColor,
+                          thickness: 1.0,
+                          indent: 30.0,
+                          endIndent: 30.0,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Directionality(
+                            textDirection: TextDirection.rtl,
+                            child: Text(
+                              "${suraProvider.verses[index]} (${index + 1})",
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                    color: provider.appMode == ThemeMode.light
+                                        ? MyThemeData.blackColor
+                                        : MyThemeData.whiteColor,
+                                  ),
+                            ),
+                          );
+                        },
+                        itemCount: suraProvider.verses.length,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
-        ),
-      ],
+        );
+      },
     );
-  }
-
-  loadFile(int index) async {
-    String file = await rootBundle.loadString('assets/files/${index + 1}.txt');
-    List<String> lines = file.split('\n');
-    setState(() {
-      verses = lines;
-    });
   }
 }

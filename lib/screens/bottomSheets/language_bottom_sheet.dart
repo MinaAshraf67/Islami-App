@@ -12,14 +12,19 @@ class LanguageBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
-    return SizedBox(
+    return Container(
+      color: provider.appMode == ThemeMode.light
+          ? MyThemeData.whiteColor
+          : MyThemeData.secondaryColor,
       height: MediaQuery.of(context).size.height * .4,
       child: Column(
         children: [
           SvgPicture.asset(
             'assets/images/minusIcon.svg',
             // ignore: deprecated_member_use
-            color: MyThemeData.blackColor,
+            color: provider.appMode == ThemeMode.light
+                ? MyThemeData.blackColor
+                : MyThemeData.whiteColor,
           ),
           Padding(
             padding: const EdgeInsets.all(18.0),
@@ -31,10 +36,17 @@ class LanguageBottomSheet extends StatelessWidget {
                 children: [
                   Text(
                     AppLocalizations.of(context)!.settingsLanguageEn,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: provider.isoCode == "en"
-                            ? MyThemeData.primaryColor
-                            : MyThemeData.blackColor),
+                    style: provider.appMode == ThemeMode.light
+                        ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: provider.isoCode == 'en'
+                                  ? MyThemeData.primaryColor
+                                  : MyThemeData.blackColor,
+                            )
+                        : Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: provider.isoCode == 'en'
+                                  ? MyThemeData.darkYellowColor
+                                  : MyThemeData.whiteColor,
+                            ),
                   ),
                   const Spacer(),
                   provider.isoCode == "en"
@@ -42,7 +54,9 @@ class LanguageBottomSheet extends StatelessWidget {
                           width: 18.0,
                           'assets/images/rightCheck.svg',
                           // ignore: deprecated_member_use
-                          color: MyThemeData.primaryColor,
+                          color: provider.appMode == ThemeMode.light
+                              ? MyThemeData.primaryColor
+                              : MyThemeData.darkYellowColor,
                         )
                       : const SizedBox.shrink(),
                 ],
@@ -59,10 +73,17 @@ class LanguageBottomSheet extends StatelessWidget {
                 children: [
                   Text(
                     AppLocalizations.of(context)!.settingsLanguageAr,
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: provider.isoCode == "ar"
-                            ? MyThemeData.primaryColor
-                            : MyThemeData.blackColor),
+                    style: provider.appMode == ThemeMode.light
+                        ? Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: provider.isoCode == 'ar'
+                                  ? MyThemeData.primaryColor
+                                  : MyThemeData.blackColor,
+                            )
+                        : Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: provider.isoCode == 'ar'
+                                  ? MyThemeData.darkYellowColor
+                                  : MyThemeData.whiteColor,
+                            ),
                   ),
                   const Spacer(),
                   provider.isoCode == "en"
@@ -71,7 +92,9 @@ class LanguageBottomSheet extends StatelessWidget {
                           width: 18.0,
                           'assets/images/rightCheck.svg',
                           // ignore: deprecated_member_use
-                          color: MyThemeData.primaryColor,
+                          color: provider.appMode == ThemeMode.light
+                              ? MyThemeData.primaryColor
+                              : MyThemeData.darkYellowColor,
                         )
                 ],
               ),
